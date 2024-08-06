@@ -22,24 +22,25 @@ function getRandomName() {
   
 }
 
-function getDC(){
-  let dc = sessionStorage.getItem('dc');
-  if (!dc) {
-    if (Math.random() < 0.5) {
-      dc = 'in';//Delivery Site
-    } else {
-      dc = 'eu';//zylker
-    }
-    sessionStorage.setItem('dc', dc);
-  }
-  return dc;
+function setReplay(){
+  // Get the current time
+    const now = new Date();
+
+    // Get the current seconds
+    const seconds = now.getSeconds();
+
+    // Get the last digit of the seconds
+    const lastDigit = seconds % 10;
+
+    // Check if the last digit is divisible by 2
+    return lastDigit % 2 === 0;
 }
 
-const dc = getDC();
-var appkey = 'afc8510a56cf1004f9024d9d121f2563'
-if(dc === 'in'){
-appkey = 'c9393037c1de76d77fe0dc1de5516349'
-}
+// const dc = getDC();
+// var appkey = 'afc8510a56cf1004f9024d9d121f2563'
+// if(dc === 'in'){
+// appkey = 'c9393037c1de76d77fe0dc1de5516349'
+// }
 	
 (function(w,d,s,r,k,h,m){
 	if(w.performance && w.performance.timing && w.performance.navigation) {
@@ -52,4 +53,4 @@ appkey = 'c9393037c1de76d77fe0dc1de5516349'
 })(window,document,'//static.site24x7rum.in/beacon/site24x7rum-min.js?appKey=','s247r','c9393037c1de76d77fe0dc1de5516349');
 s247r('setWaterfallsSamplingRate',1);
 s247r('userId',getRandomName());
-s247r('recordSession',true);
+s247r('recordSession',setReplay());
