@@ -22,18 +22,33 @@ function getRandomName() {
   
 }
 
-function setReplay(){
-  // Get the current time
+function setDC() {
+    let dc = sessionStorage.getItem('dc');
+    if(!dc){
     const now = new Date();
+    const milliseconds = now.getMilliseconds();
+    const lastDigit = milliseconds % 10;
+	const a = lastDigit % 2 === 0;
+    sessionStorage.setItem('dc', `${a}`);
 
-    // Get the current seconds
+    return `${a}`;
+    }
+	return dc
+}
+
+
+function setReplay(){
+	    let rp = sessionStorage.getItem('replay');
+	if(!rp){
+    const now = new Date();
     const seconds = now.getSeconds();
-
-    // Get the last digit of the seconds
     const lastDigit = seconds % 10;
-
-    // Check if the last digit is divisible by 2
-    return lastDigit % 2 === 0;
+		const r = lastDigit % 2 === 0;
+    sessionStorage.setItem('replay', r);
+    return r
+		
+	}
+	return rp
 }
 
 // const dc = getDC();
@@ -41,7 +56,8 @@ function setReplay(){
 // if(dc === 'in'){
 // appkey = 'c9393037c1de76d77fe0dc1de5516349'
 // }
-	
+
+if( 'true' == setDC()){
 (function(w,d,s,r,k,h,m){
 	if(w.performance && w.performance.timing && w.performance.navigation) {
 		w[r] = w[r] || function(){(w[r].q = w[r].q || []).push(arguments)};
@@ -51,6 +67,17 @@ function setReplay(){
 		m && m(b, c, d, f, g),g || (g = new Error(b)),(w[r].q = w[r].q || []).push(["captureException",g]);})
 	}
 })(window,document,'//static.site24x7rum.in/beacon/site24x7rum-min.js?appKey=','s247r','c9393037c1de76d77fe0dc1de5516349');
+}else{
+(function(w,d,s,r,k,h,m){
+	if(w.performance && w.performance.timing && w.performance.navigation) {
+		w[r] = w[r] || function(){(w[r].q = w[r].q || []).push(arguments)};
+		h=d.createElement('script');h.async=true;h.setAttribute('src',s+k);
+		d.getElementsByTagName('head')[0].appendChild(h);
+		(m = window.onerror),(window.onerror = function (b, c, d, f, g) {
+		m && m(b, c, d, f, g),g || (g = new Error(b)),(w[r].q = w[r].q || []).push(["captureException",g]);})
+	}
+})(window,document,'//static.site24x7rum.eu/beacon/site24x7rum-min.js?appKey=','s247r','afc8510a56cf1004f9024d9d121f2563');
+}
 s247r('setWaterfallsSamplingRate',1);
 s247r('userId',getRandomName());
 s247r('recordSession',setReplay());
