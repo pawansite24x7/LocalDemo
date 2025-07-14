@@ -80,4 +80,16 @@ if( 'true' == setDC()){
 }
 s247r('setWaterfallsSamplingRate',1);
 s247r('userId',getRandomName());
-s247r('recordSession',setReplay());
+const allowedUrls = [
+            /.*/
+        ];
+s247r('recordSession',{//No I18N
+    "recordingSamplingRate": 1,
+    "trackEvents":true,//No I18N
+    "trackConsoleEvents":true,//No I18N
+    "captureAllWaterfalls":false,//No I18N
+    "maskAllInput":true,//No I18N
+    "maskAllText":true,//No I18N
+    "collectNetworkDetails":true,//No I18N
+    "allowedNetworkUrls": allowedUrls//No I18N
+});
