@@ -171,7 +171,7 @@ const allowedUrls = [
             /.*/
         ];
 s247r('recordSession',{//No I18N
-    "recordingSamplingRate": 1,
+    "recordingSamplingRate": 0.5,
     "trackEvents":true,//No I18N
     "trackConsoleEvents":true,//No I18N
     "captureAllWaterfalls":false,//No I18N
