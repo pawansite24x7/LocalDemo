@@ -137,12 +137,12 @@ function setReplay(){
 // appkey = 'c9393037c1de76d77fe0dc1de5516349'
 // }
 
-Object.defineProperty(navigator, 'userAgent', {
-  get: function() {
-    return getRandomUserAgent();
-  },
-  configurable: true
-});
+// Object.defineProperty(navigator, 'userAgent', {
+//   get: function() {
+//     return getRandomUserAgent();
+//   },
+//   configurable: true
+// });
 
 if( 'true' == setDC()){
 (function(w,d,s,r,k,h,m){
