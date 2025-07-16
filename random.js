@@ -11,6 +11,7 @@ function getRandomName() {
   "Walker", "Young", "King", "Hill", "Scott", "Adams"];
   
   let randomName = sessionStorage.getItem('randomName');
+
   
   if (!randomName) {
     const randomFirstName = firstName[Math.floor(Math.random() * firstName.length)];
@@ -18,6 +19,9 @@ function getRandomName() {
     sessionStorage.setItem('randomName', randomFirstName+' '+randomLastName);
     return `${randomFirstName} ${randomLastName}`;
   }
+   
+  console.log("random user name assigned "+randomName);
+
   return randomName;
   
 }
@@ -92,7 +96,6 @@ function getRandomUserAgent() {
   "MacOutlook/16.12.0.180410 (Intelx64 Mac OS X Version 10.13.4 (Build 17E199))"
 ];
   let uaName = sessionStorage.getItem('uaName');
-  
   if (!uaName) {
     const randomUAname = ua[Math.floor(Math.random() * ua.length)];
     sessionStorage.setItem('uaName', randomUAname);
