@@ -21,6 +21,9 @@ function getRandomName() {
   }
    
   console.log("random user name assigned "+randomName);
+	const now = new Date();
+const currentTime = now.toLocaleTimeString();
+console.log("Current Time:", currentTime);
 
   return randomName;
   
